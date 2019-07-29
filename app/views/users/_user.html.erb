@@ -1,0 +1,12 @@
+
+<p>First name: <%= user.first_name %></p>
+<p>Last name: <%= user.last_name %></p>
+<p>Email: <%= user.email %></p>
+<% if user.cellphone %>
+  <p>Cellphone: <%= user.cellphone %></p>
+<% end %>
+<% if user.address %>
+  <p><%= user.address %></p>
+<% end %>
+
+<hr>
