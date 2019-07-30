@@ -29,7 +29,8 @@ class UsersController < ApplicationController
       :address,
       :password,
       :password_confirmation
-      )
+    )
+
   end
 
   def set_user

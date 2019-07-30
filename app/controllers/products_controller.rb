@@ -5,6 +5,30 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
+  def new
+    @product = Product.new
+  end
+
+  def create
+    @product = Product.new(product_params)
+
+    if @product.save
+      redirect_to products_path
+    else
+      render :new
+    end
+  end
+
+  def product_params
+    product_params = params.require(:product).permit(
+      :name,
+      :description,
+      :quantity,
+      :price,
+      :user_id
+    )
+  end
+
   def destroy
     @product.destroy
     redirect_to products_path
@@ -13,4 +37,5 @@ class ProductsController < ApplicationController
   def set_product
     @product = Product.find(params[:id])
   end
+
 end
