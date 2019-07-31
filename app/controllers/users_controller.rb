@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  before_action :set_user, only: [:show]
+
   def index
     @users = User.all
   end
@@ -10,12 +13,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to root_path, notice: 'your User is now live' }
-      else
-        format.html { render :new }
-      end
+    if @user.save
+      redirect_to root_path, notice: 'your User is now live'
+    else
+      render :new
     end
   end
 
@@ -28,4 +29,9 @@ class UsersController < ApplicationController
       :address
       )
   end
+
+  def set_user
+    @user = User.find(params[:id])
+  end
+
 end

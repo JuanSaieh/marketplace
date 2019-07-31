@@ -1,2 +1,14 @@
-<%= link_to "Create New User", new_user_path %>
-<%= render partial: 'user', collection: @users %>
+<button type="button" class="btn btn-primary btn-sm"><%= link_to "Create New User", new_user_path, class: "btn btn-primary btn-sm" %></button>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render partial: 'user', collection: @users %>
+  </tbody>
+</table>
