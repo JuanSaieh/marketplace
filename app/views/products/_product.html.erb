@@ -2,5 +2,6 @@
 <p>Description: <%= product.description %></p>
 <p>Quantity <%= product.quantity %></p>
 <p>Price <%= product.price %></p>
+<%= link_to "Delete Product", product_path(product), method: :delete, data: { confirm: 'Are you sure?' } %>
 
 <hr>
