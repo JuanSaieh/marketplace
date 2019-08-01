@@ -1,12 +1,6 @@
-
-<p>First name: <%= user.first_name %></p>
-<p>Last name: <%= user.last_name %></p>
-<p>Email: <%= user.email %></p>
-<% if user.cellphone %>
-  <p>Cellphone: <%= user.cellphone %></p>
-<% end %>
-<% if user.address %>
-  <p><%= user.address %></p>
-<% end %>
-
-<hr>
+<tr>
+  <th scope="row"><%= user.id %></th>
+  <td><%= link_to user.first_name, user_path(user.id) %></td>
+  <td><%= user.last_name %></td>
+  <td><%= user.email %></td>
+</tr>
