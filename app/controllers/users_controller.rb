@@ -26,7 +26,9 @@ class UsersController < ApplicationController
       :last_name,
       :email,
       :cellphone,
-      :address
+      :address,
+      :password,
+      :password_confirmation
       )
   end
 
