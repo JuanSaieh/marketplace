@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:destroy, :edit, :update]
+  before_action :set_product, except: [:index, :new, :create]
 
   def index
     @products = Product.all
@@ -24,6 +24,8 @@ class ProductsController < ApplicationController
     redirect_to products_path
   end
 
+  def show; end
+  
   def edit; end
 
   def update
