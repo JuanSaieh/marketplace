@@ -4,6 +4,7 @@
   <td><%= product.quantity %></td>
   <td><%= product.price %></td>
   <td>
+    <%= link_to 'Edit', edit_product_path(product) %> | 
     <%= link_to 'Draft', product_status_path(product, status: 'draft'), method: :patch %> | 
     <%= link_to 'Published', product_status_path(product, status: 'published'), method: :patch %> | 
     <%= link_to 'Archive', product_status_path(product, status: 'archived'), method: :patch %> | 
