@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: [:show]
+  before_action :set_user, only: [:show, :destroy]
 
   def index
     @users = User.all
@@ -18,6 +18,11 @@ class UsersController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    @user.destroy
+    redirect_to users_path
   end
 
   def user_params
