@@ -1,1 +1,17 @@
-<%= render partial: 'product', collection: @products %>
+<button type="button" class="btn btn-primary btn-sm">
+  <%= link_to "Create new product", new_product_path, class: "btn btn-primary btn-sm" %>
+</button>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render partial: 'product', collection: @products %>
+  </tbody>
+</table>
