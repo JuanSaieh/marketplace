@@ -1,4 +1,12 @@
-<button type="button" class="btn btn-primary btn-sm"><%= link_to "Create New User", new_user_path, class: "btn btn-primary btn-sm" %></button>
+<button type="button" class="btn btn-primary btn-sm">
+  <% if user_signed_in? %>
+    <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-primary btn-sm" %>
+  <% else %>
+    <%= link_to "Login", new_user_session_path, class: "btn btn-primary btn-sm" %>
+    <%= link_to "Create New User", new_user_registration_path, class: "btn btn-primary btn-sm" %>
+  <% end %>
+</button>
+
 <table class="table">
   <thead>
     <tr>
