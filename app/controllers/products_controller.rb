@@ -25,7 +25,8 @@ class ProductsController < ApplicationController
       :description,
       :quantity,
       :price,
-      :user_id
+      :user_id,
+      :category_id
     )
   end
 
