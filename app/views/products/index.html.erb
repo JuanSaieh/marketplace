@@ -1,6 +1,8 @@
-<button type="button" class="btn btn-primary btn-sm">
-  <%= link_to "Create new product", new_product_path, class: "btn btn-primary btn-sm" %>
-</button>
+<% if current_user %>
+  <button type="button" class="btn btn-primary btn-sm">
+    <%= link_to "Create new product", new_product_path, class: "btn btn-primary btn-sm" %>
+  </button>
+<% end %>
 <table class="table">
   <thead>
     <tr>
