@@ -19,6 +19,13 @@ class ProductsController < ApplicationController
     end
   end
 
+  def destroy
+    @product.destroy
+    redirect_to products_path
+  end
+
+  private
+
   def product_params
     product_params = params.require(:product).permit(
       :name,
@@ -28,11 +35,6 @@ class ProductsController < ApplicationController
       :user_id,
       :category_id
     )
-  end
-
-  def destroy
-    @product.destroy
-    redirect_to products_path
   end
 
   def set_product
