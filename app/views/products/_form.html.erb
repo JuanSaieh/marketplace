@@ -20,12 +20,12 @@
     <%= form.number_field :price, class: "form-control" %>
   </div>
 
-  <%= collection_select(:product, :user_id, User.all, :id, :first_name, {prompt: true}, {class: "custom-select col-md-6"}) %>
+  <%= collection_select(:product, :user_id, User.all, :id, :first_name, {prompt: true}, {class: "custom-select col-md-8"}) %>
   
-  <%= collection_select(:product, :category_id, Category.all, :id, :name, {prompt: true}, {class: "custom-select col-md-6"}) %>
+  <%= collection_select(:product, :category_id, Category.all, :id, :name, {prompt: true}, {class: "custom-select col-md-8"}) %>
   
   <br>
 
-  <%= form.submit "Create Product", class: "btn btn-primary" %>
+  <%= form.submit "#{action_name.capitalize} Product", class: "btn btn-primary" %>
 
 <% end %>

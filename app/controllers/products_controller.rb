@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:destroy]
+  before_action :set_product, only: [:destroy, :edit, :update]
 
   def index
     @products = Product.all
@@ -22,6 +22,16 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
     redirect_to products_path
+  end
+
+  def edit; end
+
+  def update
+    if @product.update(product_params)
+      redirect_to products_path, notice: 'Blog was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   private
