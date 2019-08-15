@@ -10,8 +10,8 @@ class ProductsController < ApplicationController
   end
 
   def create
+    byebug
     @product = Product.new(product_params)
-
     if @product.save
       redirect_to products_path
     else
@@ -45,7 +45,8 @@ class ProductsController < ApplicationController
       :quantity,
       :price,
       :user_id,
-      :category_id
+      :category_id,
+      images: []
     )
   end
 

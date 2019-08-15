@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :products do
     resource :status, only: :update, module: 'products'
+    resources :images, only: [:destroy], module: 'products'
   end
 
   resources :users, except: [:edit, :update]
