@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Dear, <%= @user.first_name %></h1>
+    <p>
+      We have a new Product in stock!
+      You can view it on: <%= link_to 'New Arrivals', product_url(@product) %>.<br>
+    </p>
+  </body>
+</html>
