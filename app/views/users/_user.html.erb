@@ -4,6 +4,8 @@
   <td><%= user.last_name %></td>
   <td><%= user.email %></td>
   <td>
-    <%= link_to "Delete", user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% if is_user_current_user(user) %>
+      <%= link_to "Delete", user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
   </td>
 </tr>

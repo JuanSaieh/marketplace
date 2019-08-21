@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_user, only: [:show, :destroy]
+  before_action :allow_action, only: [:destroy]
 
   def index
     @users = User.all
@@ -20,9 +21,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def show; end
+
   def destroy
+    return  redirect_to users_path, alert: 'Permission Denied - Cannot delete another User' unless @allow_action
     @user.destroy
-    redirect_to users_path
+    redirect_to users_path, notice: 'User deleted successfully'
   end
 
   def user_params
@@ -39,6 +43,10 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def is_user_current_user
+    @allow_action = current_user && @user.id.equal?(current_user.id)
   end
 
 end
