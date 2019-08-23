@@ -12,4 +12,5 @@ class User < ApplicationRecord
   def name
     "#{first_name} #{last_name}".titleize
   end
+
 end
