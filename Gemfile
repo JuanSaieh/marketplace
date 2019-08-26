@@ -66,3 +66,5 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'devise'
 gem "cocoon"
 gem "mini_magick"
+gem 'dotenv-rails', groups: [:development, :test]
+gem 'sidekiq'
