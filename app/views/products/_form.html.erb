@@ -21,8 +21,6 @@
   </div>
 
   <div class="form-group col-md-12">
-    <%= form.label :user %><br>
-    <%= collection_select(:product, :user_id, User.all, :id, :first_name, {prompt: true}, {class: "custom-select"}) %><br>
     <%= form.label :category %><br>
     <%= collection_select(:product, :category_id, Category.all, :id, :name, {prompt: true}, {class: "custom-select"}) %><br>
   </div>
