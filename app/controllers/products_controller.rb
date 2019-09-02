@@ -5,7 +5,12 @@ class ProductsController < ApplicationController
   before_action :is_product_from_current_user, only: [:edit, :update]
 
   def index
-    @products = Product.all
+    if current_user
+      user_products = current_user.products.draft.or(current_user.products.archived)
+      @products = Product.published.or(user_products)
+    else
+      @products = Product.published
+    end
   end
 
   def new
