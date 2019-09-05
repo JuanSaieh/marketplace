@@ -69,3 +69,4 @@ gem "cocoon"
 gem "mini_magick"
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'sidekiq'
+gem 'omniauth-google-oauth2'
