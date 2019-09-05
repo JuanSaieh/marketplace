@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :products, dependent: :destroy
   validates_presence_of :first_name, :last_name, :email
+  accepts_nested_attributes_for :products, allow_destroy: true
 
   scope :except_me, ->(id) { where('id != ?', id) }
 
