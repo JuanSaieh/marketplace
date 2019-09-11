@@ -35,5 +35,4 @@ RSpec.describe User, type: :model do
       it { expect(User.except_me(user)).to match_array(arr) }
     end
   end
-
 end
