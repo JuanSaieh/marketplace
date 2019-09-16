@@ -26,7 +26,10 @@
         </li>
       <% else %>
         <li class="nav-item active">
-          <%= link_to "Google log in", user_google_oauth2_omniauth_authorize_path, class: "nav-link" %>
+          <%= link_to "Log in with FaceBook", user_facebook_omniauth_authorize_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item active">
+          <%= link_to "Log in with Google", user_google_oauth2_omniauth_authorize_path, class: "nav-link" %>
         </li>
         <li class="nav-item active">
           <%= link_to "Log in", new_user_session_path, class: "nav-link" %>
