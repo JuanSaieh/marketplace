@@ -4,12 +4,8 @@ class ProductsController < ApplicationController
   before_action :is_product_from_current_user, only: [:edit, :update, :destroy]
 
   def index
-    if current_user
-      user_products = current_user.products.draft.or(current_user.products.archived)
-      @products = Product.published.or(user_products)
-    else
-      @products = Product.published
-    end
+    return @products = Product.published.or(current_user.products) if current_user
+    @products = Product.published
   end
 
   def new
@@ -19,6 +15,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.user_id = current_user.id
+
     if @product.save
       redirect_to products_path
     else
@@ -35,7 +32,11 @@ class ProductsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    unless is_product_from_current_user_or_published
+      redirect_to products_path, alert: 'Permission Denied - Cannot view unpublished Products'
+    end
+  end
   
   def edit
     unless @allow_action
@@ -44,15 +45,18 @@ class ProductsController < ApplicationController
   end
 
   def update
-    if @product.update(product_params)
-      redirect_to products_path, notice: 'Blog was successfully updated.'
+    if @allow_action
+      if @product.update(product_params)
+        redirect_to products_path, notice: 'Blog was successfully updated.'
+      else
+        render :edit
+      end
     else
-      render :edit
+      redirect_to products_path, notice: 'Permission Denied - Cannot update Products from another User'
     end
   end
 
   private
-
   def product_params
     params.require(:product).permit(
       :name,
@@ -70,5 +74,9 @@ class ProductsController < ApplicationController
 
   def is_product_from_current_user
     @allow_action = current_user && current_user.id.equal?(@product.user_id)
+  end
+
+  def is_product_from_current_user_or_published
+    is_product_from_current_user || @product.published?
   end
 end
