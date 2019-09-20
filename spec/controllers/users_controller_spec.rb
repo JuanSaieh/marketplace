@@ -26,9 +26,7 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe 'GET #new' do
-    before do
-      get :new
-    end
+    before { get :new }
     
     it 'returns succssfully' do
       expect(response).to be_successful
@@ -93,9 +91,7 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe 'DELETE #destroy' do
-    before do
-      create_list(:user, 2)
-    end
+    before { create_list(:user, 2) }
 
     context 'when user is signed in' do
       it 'assigns allow_action to true' do

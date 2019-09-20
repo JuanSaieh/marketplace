@@ -8,5 +8,4 @@ class Image < ApplicationRecord
       errors.add(:images, "must be png or jpeg")
     end
   end
-
 end
