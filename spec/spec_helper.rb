@@ -14,7 +14,27 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'simplecov'
+require 'omniauth'
 SimpleCov.start
+OmniAuth.config.test_mode = true
+omniauth_facebook_hash = { 
+                  provider: 'facebook',
+                  info: { 
+                          name: 'john doe',
+                          email: 'test@example.com'
+                  }
+}
+omniauth_google_hash = {
+                  provider: 'google',
+                  info: {
+                    first_name: 'john',
+                    last_name: 'doe',
+                    email: 'test@example.com'
+                  }
+}
+OmniAuth.config.add_mock(:facebook, omniauth_facebook_hash)
+OmniAuth.config.add_mock(:google, omniauth_google_hash)
+
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
