@@ -23,7 +23,7 @@ RSpec.describe User, type: :model do
   end
 
   describe '#name returns a string' do
-    it { expect(user.name).to eql('John Doe') }
+    it { expect(user.name.class).to be(String) }
   end
 
   describe '#expect_me' do
